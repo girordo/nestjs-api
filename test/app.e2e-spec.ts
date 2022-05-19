@@ -130,11 +130,8 @@ describe('App e2e', () => {
           })
           .withBody(dto)
           .expectStatus(200)
-          .expectBodyContains({
-            firstName: dto.firstName,
-            email: dto.email,
-          })
-          .inspect();
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.email);
       });
     });
   });
