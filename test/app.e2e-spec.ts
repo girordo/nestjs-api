@@ -1,6 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as pactum from 'pactum';
+import { CreateBookMarkDto } from 'src/bookmark/dto';
 import { EditUserDto } from 'src/user/dto';
 import { AppModule } from '../src/app.module';
 import { AuthDto } from '../src/auth/dto';
@@ -62,6 +63,14 @@ describe('App e2e', () => {
           .expectStatus(400);
       });
 
+      it('it should throw if body not provided', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({})
+          .expectStatus(400);
+      });
+
       it('should signup', () => {
         return pactum
           .spec()
@@ -89,6 +98,14 @@ describe('App e2e', () => {
           .withBody({
             email: dto.email,
           })
+          .expectStatus(400);
+      });
+
+      it('it should throw if body not provided', () => {
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody({})
           .expectStatus(400);
       });
 
@@ -150,11 +167,48 @@ describe('App e2e', () => {
       });
     });
 
-    describe('Create bookmark', () => {});
+    describe('Create bookmark', () => {
+      const dto: CreateBookMarkDto = {
+        title: 'First Bookmark',
+        link: 'https://www.google.com',
+      };
+      it('should create bookmark', () => {
+        return pactum
+          .spec()
+          .post('/bookmarks')
+          .withHeaders({ AUthorization: 'Bearer $S{userAt}' })
+          .withBody(dto)
+          .expectStatus(201)
+          .stores('bookmarkId', 'id');
+      });
+    });
 
-    describe('Get bookmarks', () => {});
+    describe('Get bookmarks', () => {
+      it('should get bookmarks', () => {
+        return pactum
+          .spec()
+          .get('/bookmarks')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(200)
+          .expectJsonLength(1);
+      });
+    });
 
-    describe('Get bookmark by id', () => {});
+    describe('Get bookmark by id', () => {
+      it('should get bookmark by id', () => {
+        return pactum
+          .spec()
+          .get('/bookmarks/{id}')
+          .withPathParams('id', '$S{bookmarkId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(200)
+          .expectBodyContains('$S{bookmarkId}');
+      });
+    });
 
     describe('Edit bookmark by id', () => {});
 
