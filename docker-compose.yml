@@ -1,5 +1,10 @@
 version: '3.8'
 services:
+  redis:
+    container_name: redis
+    image: redis:5
+    networks:
+      - freecodecamp
   dev-db:
     image: postgres:13
     ports:
