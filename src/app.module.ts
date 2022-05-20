@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { SendMailProducerService } from './jobs';
 
 @Module({
   imports: [
@@ -24,8 +25,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-          user: 'raphael.friesen63@ethereal.email',
-          pass: '8vm2xtgBTq3Nn3GXcZ',
+          user: 'tiana.bechtelar49@ethereal.email',
+          pass: 'qBVU6EJfyVZVHN9Xzu',
         },
       },
     }),
@@ -33,5 +34,6 @@ import { MailerModule } from '@nestjs-modules/mailer';
     BookmarkModule,
     PrismaModule,
   ],
+  providers: [SendMailProducerService],
 })
 export class AppModule {}

@@ -5,6 +5,7 @@ import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable({})
 export class AuthService {
@@ -12,6 +13,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwt: JwtService,
     private config: ConfigService,
+    private mailService: MailerService,
   ) {}
 
   async signUp(dto: AuthDto) {
@@ -22,6 +24,12 @@ export class AuthService {
           email: dto.email,
           hash,
         },
+      });
+      await this.mailService.sendMail({
+        to: user.email,
+        from: 'NestJS including nodemailer',
+        subject: 'É nozes',
+        text: `Dlrow olleh ${user.email}`,
       });
       return this.signToken(user.id, user.email);
     } catch (error) {
