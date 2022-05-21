@@ -1,7 +1,11 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { throws } from 'assert';
+import {
+  Delete,
+  ForbiddenException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateBookMarkDto, EditBookmarkDto } from './dto';
+import { CreateBookmarkDto, EditBookmarkDto } from './dto';
 
 @Injectable()
 export class BookmarkService {
@@ -24,7 +28,7 @@ export class BookmarkService {
     });
   }
 
-  async createBookmark(userId: number, dto: CreateBookMarkDto) {
+  async createBookmark(userId: number, dto: CreateBookmarkDto) {
     const bookmark = await this.prisma.bookmark.create({
       data: {
         userId,
@@ -35,7 +39,7 @@ export class BookmarkService {
     return bookmark;
   }
 
-  async editBookMarkById(
+  async editBookmarkById(
     userId: number,
     bookmarkId: number,
     dto: EditBookmarkDto,
@@ -60,5 +64,21 @@ export class BookmarkService {
     });
   }
 
-  deleteBookmarkById(userId: number, bookmarkId: number) {}
+  async deleteBookmarkById(userId: number, bookmarkId: number) {
+    const bookmark = await this.prisma.bookmark.findUnique({
+      where: {
+        id: bookmarkId,
+      },
+    });
+
+    if (!bookmark || bookmark.userId !== userId) {
+      throw new ForbiddenException('Access to resources denied');
+    }
+
+    await this.prisma.bookmark.delete({
+      where: {
+        id: bookmarkId,
+      },
+    });
+  }
 }
