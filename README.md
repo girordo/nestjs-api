@@ -1,19 +1,20 @@
-<p align="center">
+<p class="images-techs">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-<p align="center">
-
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-
-<a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-
+  <a href="http://docker.com/" target="blank"><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" width="200" alt="Docker logo"/></a>
+  <a href="http://jwt.io" target="blank"><img src="https://vegibit.com/wp-content/uploads/2018/07/JSON-Web-Token-Authentication-With-Node.png" width="200" alt="JWT logo"></a>
 </p>
 
 ## Description
 
 This is a little project just for educational and curiosity purpose.
+In this project I learned about:
+
+- How to setup a NestJS project
+- How to use the NestJS tooling (create controllers, services, modules)
+- Concept and how to use Guards
+- JWT Authentication Strategy with Guards
+- How to dockerize an NestJS application with PostgreSQL
+- How to make end-to-end tests (for integration purpose)
 
 ## Installation
 
@@ -53,3 +54,28 @@ $ npm run test:cov
 ## License
 
 This project is [MIT licensed](LICENSE).
+
+---
+
+### Author
+
+<style>
+  .images-techs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  .profile-image {
+    border-radius: 50px;
+    margin-right: 10px
+  }
+</style>
+
+<div class="profile">
+  <img align="left" class="profile-image" src="https://pbs.twimg.com/profile_images/1438505077954646016/TtnLbogX_400x400.jpg" width="50" alt="Profile"/>
+  <sub>Made with 💜 by <a href="https://github.com/girordo">Tarcísio Giroldo</a></sub>
+</div>
