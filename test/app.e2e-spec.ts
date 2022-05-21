@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as pactum from 'pactum';
-import { CreateBookMarkDto } from 'src/bookmark/dto';
+import { CreateBookmarkDto, EditBookmarkDto } from 'src/bookmark/dto';
 import { EditUserDto } from 'src/user/dto';
 import { AppModule } from '../src/app.module';
 import { AuthDto } from '../src/auth/dto';
@@ -168,7 +168,7 @@ describe('App e2e', () => {
     });
 
     describe('Create bookmark', () => {
-      const dto: CreateBookMarkDto = {
+      const dto: CreateBookmarkDto = {
         title: 'First Bookmark',
         link: 'https://www.google.com',
       };
@@ -210,8 +210,51 @@ describe('App e2e', () => {
       });
     });
 
-    describe('Edit bookmark by id', () => {});
+    describe('Edit bookmark by id', () => {
+      const dto: EditBookmarkDto = {
+        title: 'First Bookmark',
+        description: 'First Bookmark',
+        link: 'https://www.google.com',
+      };
 
-    describe('Delete bookmark by id', () => {});
+      it('should edit bookmark by id', () => {
+        return pactum
+          .spec()
+          .patch('/bookmarks/{id}')
+          .withPathParams('id', '$S{bookmarkId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.title)
+          .expectBodyContains(dto.description)
+          .expectBodyContains(dto.link);
+      });
+    });
+
+    describe('Delete bookmark by id', () => {
+      it('should get bookmark by id', () => {
+        return pactum
+          .spec()
+          .delete('/bookmarks/{id}')
+          .withPathParams('id', '$S{bookmarkId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(204);
+      });
+
+      it('should get empty bookmarks', () => {
+        return pactum
+          .spec()
+          .get('/bookmarks')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(200)
+          .expectJsonLength(0);
+      });
+    });
   });
 });
