@@ -1,4 +1,4 @@
-<p class="images-techs">
+<p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
   <a href="http://docker.com/" target="blank"><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" width="200" alt="Docker logo"/></a>
   <a href="http://jwt.io" target="blank"><img src="https://vegibit.com/wp-content/uploads/2018/07/JSON-Web-Token-Authentication-With-Node.png" width="200" alt="JWT logo"></a>
@@ -59,23 +59,7 @@ This project is [MIT licensed](LICENSE).
 
 ### Author
 
-<style>
-  .images-techs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .profile {
-    display: flex;
-    align-items: center;
-  }
-  .profile-image {
-    border-radius: 50px;
-    margin-right: 10px
-  }
-</style>
-
-<div class="profile">
+<div>
   <img align="left" class="profile-image" src="https://pbs.twimg.com/profile_images/1438505077954646016/TtnLbogX_400x400.jpg" width="50" alt="Profile"/>
   <sub>Made with 💜 by <a href="https://github.com/girordo">Tarcísio Giroldo</a></sub>
 </div>
