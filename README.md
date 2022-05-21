@@ -57,9 +57,7 @@ This project is [MIT licensed](LICENSE).
 
 ---
 
-### Author
-
-<div>
+<div align="center">
   <img align="left" class="profile-image" src="https://pbs.twimg.com/profile_images/1438505077954646016/TtnLbogX_400x400.jpg" width="50" alt="Profile"/>
   <sub>Made with 💜 by <a href="https://github.com/girordo">Tarcísio Giroldo</a></sub>
 </div>
