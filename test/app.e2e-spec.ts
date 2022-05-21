@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as pactum from 'pactum';
-import { CreateBookMarkDto } from 'src/bookmark/dto';
+import { CreateBookMarkDto, EditBookmarkDto } from 'src/bookmark/dto';
 import { EditUserDto } from 'src/user/dto';
 import { AppModule } from '../src/app.module';
 import { AuthDto } from '../src/auth/dto';
@@ -210,7 +210,26 @@ describe('App e2e', () => {
       });
     });
 
-    describe('Edit bookmark by id', () => {});
+    describe('Edit bookmark by id', () => {
+      const dto: EditBookmarkDto = {
+        title: 'First Bookmark',
+        description: 'First Bookmark',
+        link: 'https://www.google.com',
+      };
+
+      it('should get bookmark by id', () => {
+        return pactum
+          .spec()
+          .patch('/bookmarks/{id}')
+          .withPathParams('id', '$S{bookmarkId}')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains('$S{bookmarkId}');
+      });
+    });
 
     describe('Delete bookmark by id', () => {});
   });
