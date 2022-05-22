@@ -51,6 +51,20 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Inspiration
+
+Besides the NestJS official docs I followed this two videos:
+https://www.youtube.com/watch?v=GHTA143_b-s
+https://www.youtube.com/watch?v=PfSyDd3Sc5A
+https://www.youtube.com/watch?v=X7RULL-wIhE
+
+And the repo:
+https://github.com/NikhilCodes/nestjs-best-practices
+
+All the dockerization and setting up the template can be found on the first video,
+in the second one I integrate Swagger with the api. In the third video I used the helmet properties but not implement the healthcheck with terminus module. (yet!)
+Although in the repo I used the middleware CORS code to implement a middleware for my self.
+
 ## License
 
 This project is [MIT licensed](LICENSE).
