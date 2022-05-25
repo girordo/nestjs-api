@@ -6,7 +6,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { BullModule } from '@nestjs/bull';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { SendMailProducerService } from './jobs';
+import { SendMailProducerService } from './jobs/sendMail-producer-servicer';
+import { MailBullModuleModule } from './mail-bull-module/mail-bull-module.module';
 
 @Module({
   imports: [
@@ -33,7 +34,7 @@ import { SendMailProducerService } from './jobs';
     UserModule,
     BookmarkModule,
     PrismaModule,
+    MailBullModuleModule,
   ],
-  providers: [SendMailProducerService],
 })
 export class AppModule {}
