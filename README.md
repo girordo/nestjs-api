@@ -74,3 +74,5 @@ This project is [MIT licensed](LICENSE).
 <div align="center">
   <sub>Made with 💜 by <a href="https://github.com/girordo">Tarcísio Giroldo</a></sub>
 </div>
+
+#just a quick change for testing git config
