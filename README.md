@@ -16,6 +16,9 @@ In this project I learned about:
 - How to dockerize an NestJS application with PostgreSQL
 - How to make end-to-end tests (for integration purpose)
 
+
+[![GitHub last commit](https://img.shields.io/github/last-commit/lucasvegi/Elixir-Code-Smells)](https://github.com/girordo/nestjs-api/commits/main)
+
 ## Installation
 
 ```bash
