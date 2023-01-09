@@ -17,7 +17,7 @@ In this project I learned about:
 - How to make end-to-end tests (for integration purpose)
 
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/lucasvegi/Elixir-Code-Smells)](https://github.com/girordo/nestjs-api/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/girordo/nestjs-api)](https://github.com/girordo/nestjs-api/commits/main)
 
 ## Installation
 
