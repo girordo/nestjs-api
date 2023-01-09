@@ -4,6 +4,8 @@
   <a href="http://jwt.io" target="blank"><img src="https://vegibit.com/wp-content/uploads/2018/07/JSON-Web-Token-Authentication-With-Node.png" width="200" alt="JWT logo"></a>
 </p>
 
+[![GitHub last commit](https://img.shields.io/github/last-commit/girordo/nestjs-api)](https://github.com/girordo/nestjs-api/commits/main)
+
 ## Description
 
 This is a little project just for educational and curiosity purpose.
@@ -15,9 +17,6 @@ In this project I learned about:
 - JWT Authentication Strategy with Guards
 - How to dockerize an NestJS application with PostgreSQL
 - How to make end-to-end tests (for integration purpose)
-
-
-[![GitHub last commit](https://img.shields.io/github/last-commit/girordo/nestjs-api)](https://github.com/girordo/nestjs-api/commits/main)
 
 ## Installation
 
